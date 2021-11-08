@@ -1,0 +1,20 @@
+{
+  "git.enabled": false,
+  "files.exclude": {
+      "node_modules": true,
+      ".vscode": true,
+      ".gitignore": true,
+      "package.json": true,
+      "package-lock.json": true,
+      "public": true
+  },
+  "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "vue-html": "html"
+  },
+  "emmet.syntaxProfiles": {
+  
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
+}

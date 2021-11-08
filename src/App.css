@@ -1,38 +1,365 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@1,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  color: #e4e5e8;
+  background: #121212;
+  --type-first: Helvetica, Arial, sans-serif;
+  --type-second: 'Spectral', Georgia;
+  font-family: var(--type-first);
+  padding: 0px;
+}
+
+.title {
+  font-family: var(--type-second);
+  font-size: 2rem;
+  margin: 0 auto;
+}
+
+.subtitle {
+  font-family: var(--type-second);
+  font-size: 1.2rem;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  height: 8rem;
+  z-index: 10;
+  width: 100%;
+  position: fixed;
+  background-color: #212121;
+  border: 1px solid #303030;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
+.navContainer {
+  background: #303030;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #e4e5e8;
+  font-weight: 600;
+  font-style: italic;
+  margin-left: 1rem;
+}
+
+.homeContainer {
+  padding-top: 10rem;
+}
+
+.home {
+  background: #303030;
+  height: 50%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5rem 0.5rem;
+  border-radius: 12px;
+}
+
+.content {
+  padding: 1rem;
+  margin: 0 5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.posts {
+  padding-top: 8rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.postItem:last-child {
+  grid-column: 2;
+}
+
+.postItem {
+  background: #303030;
+  padding: 0.5rem 1rem;
+  margin: 1rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.postHeader {
+  display: grid;
+  grid-template-columns: 1fr 15px;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.postTitle {
+  background: #424242;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.userID {
+  background: #7e7e7e;
+  text-align: center;
+  padding: 0.2rem;
+  font-size: 0.7rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.postContent {
+  text-align: center;
+}
+
+.modalBg {
+  position: fixed;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal {
+  z-index: 1000;
+  width: 80%;
+  height: 30rem;
+  padding-bottom: 2rem;
+  background: #424242fa;
+  border-radius: 12px;
+  margin: 10rem auto;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleUp 0.3s forwards;
+}
+
+@keyframes scaleUp {
+  to {
+    opacity: initial;
+    transform: initial;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.modalClose {
+  margin: 1rem;
+  float: right;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.modal li {
+  margin-bottom: 2rem;
+  margin-left: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
+.modal .title {
+  margin-bottom: 4rem;
+  text-align: center;
+  line-height: 5rem;
+}
+
+.loadingScreen {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.loading {
+  height: 50px;
+  border: 5px solid #575757cc;
+  width: 50px;
+  z-index: 2000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border-top: 5px solid #e4e5e8;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.animateLeft {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animateLeft 0.6s forwards;
+}
+
+@keyframes animateLeft {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+.postId {
+  margin: 1rem;
+  background: #7e7e7e;
+  text-align: center;
+  padding: 0.2rem;
+  font-size: 0.7rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.postContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 80%;
+}
+
+.postContainer p {
+  text-align: center;
+}
+
+.postModalHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.postInfo {
+  border: 1px solid #7e7e7e;
+  border-radius: 12px;
+  margin: 1rem;
+  padding: 1rem;
+  height: 100%;
+}
+
+.postComments {
+  border-radius: 12px;
+  margin: 1rem;
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.comment {
+  background: #5a5a5a;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.commentInfo {
+  margin-bottom: 0.5rem;
+  color: #e4e5e8ad;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6a6a6a #4242426e;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #4242426e;
+  border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #6a6a6a;
+  border-radius: 20px;
+  /* border: 3px solid #4242426e; */
+}
+
+.photoContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1rem;
+  padding: 1rem;
+  height: 80%;
+  overflow-y: auto;
+}
+
+.photo {
+  margin: 0.5rem 1rem;
+  background: #5a5a5a;
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.searchIcon {
+  float: right;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.toolsContainer {
+  padding: 0.5rem 2rem;
+  background: #424242;
+  height: 3rem;
+  width: 100%;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolsContainer input,
+.toolsContainer select {
+  background: #5a5a5a;
+  border: none;
+  border-radius: 10px;
+  color: #e4e5e8;
+  margin-right: 0.5rem;
+  padding: 0.2rem 0.8rem;
+}
+
+.toolsContainer input:focus,
+.toolsContainer select:focus,
+.paginationBtn:focus {
+  border: 1px solid #7e7e7e;
+  outline: none;
+}
+
+.paginationTool {
+  margin-right: 4rem;
+}
+
+.paginationBtn {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: #7e7e7e;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.disabled {
+  pointer-events: none;
+  background: #5a5a5a8c;
+  border: 1px solid #5f5f5f;
+  color: #8b8b8bc4;
 }
