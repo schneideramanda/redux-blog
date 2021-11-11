@@ -7,18 +7,18 @@ import PostModal from './PostModal';
 import PostTools from './PostTools';
 
 const Posts = () => {
-  const { posts, status } = useSelector(postsSelector);
+  const { posts, loadedPosts, status, userSelected, search } =
+    useSelector(postsSelector);
 
   if (status === 'loading') return <Loading />;
 
-  return (
-    <div>
-      <PostModal />
-
-      <div className='posts animateLeft'>
-        <PostTools />
-        {posts &&
-          posts.map(({ userId, id, title, body }) => (
+  if (userSelected === 0 && search === '')
+    return (
+      <div>
+        <PostModal />
+        <div className='posts animateLeft'>
+          <PostTools />
+          {loadedPosts.map(({ userId, id, title, body }) => (
             <PostItem
               key={id}
               id={id}
@@ -27,6 +27,41 @@ const Posts = () => {
               body={body}
             />
           ))}
+        </div>
+      </div>
+    );
+
+  return (
+    <div>
+      <PostModal />
+      <div className='posts animateLeft'>
+        <PostTools />
+        {userSelected !== 0
+          ? posts
+              .filter(
+                (post) =>
+                  post.userId === userSelected && post.body.includes(search)
+              )
+              .map(({ userId, id, title, body }) => (
+                <PostItem
+                  key={id}
+                  id={id}
+                  userId={userId}
+                  title={title}
+                  body={body}
+                />
+              ))
+          : posts
+              .filter((post) => post.body.includes(search))
+              .map(({ userId, id, title, body }) => (
+                <PostItem
+                  key={id}
+                  id={id}
+                  userId={userId}
+                  title={title}
+                  body={body}
+                />
+              ))}
       </div>
     </div>
   );

@@ -42,9 +42,12 @@ body {
 
 .navContainer {
   background: #303030;
-  padding: 0.5rem;
+  padding: 0.8rem;
   margin-bottom: 0.5rem;
   border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }
 
 .navLink {
@@ -52,7 +55,6 @@ body {
   color: #e4e5e8;
   font-weight: 600;
   font-style: italic;
-  margin-left: 1rem;
 }
 
 .homeContainer {
@@ -82,10 +84,6 @@ body {
   padding-top: 8rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-}
-
-.postItem:last-child {
-  grid-column: 2;
 }
 
 .postItem {
@@ -336,6 +334,12 @@ body {
   padding: 0.2rem 0.8rem;
 }
 
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #e4e5e8;
+  opacity: 1; /* Firefox */
+}
+
 .toolsContainer input:focus,
 .toolsContainer select:focus,
 .paginationBtn:focus {
@@ -362,4 +366,128 @@ body {
   background: #5a5a5a8c;
   border: 1px solid #5f5f5f;
   color: #8b8b8bc4;
+}
+
+@media (max-width: 600px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .navLink {
+    font-size: 0.8rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .home {
+    padding: 5rem 1rem;
+  }
+
+  .content {
+    margin: 0;
+  }
+
+  .modal {
+    height: 25rem;
+  }
+
+  .modal li {
+    margin-bottom: 1rem;
+    margin-left: 0;
+    padding-right: 1rem;
+  }
+
+  .modal .title {
+    margin-bottom: 1rem;
+    text-align: center;
+    margin-left: 2rem;
+    line-height: 8rem;
+  }
+
+  .postItem {
+    padding: 0.5rem 1rem;
+    margin: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .toolsContainer {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    height: 8rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    margin-top: 0.5rem;
+  }
+
+  .paginationTool {
+    grid-row: 1;
+    margin-left: 4rem;
+    background: #303030;
+    padding: 0.3rem;
+    border-radius: 12px;
+  }
+
+  .toolsContainer input,
+  .toolsContainer select {
+    margin: 0;
+    width: 100%;
+  }
+
+  .searchIcon {
+    display: none;
+  }
+
+  .photoContainer {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+
+  .photo {
+    margin: 1rem 1rem;
+    padding: 0.8rem;
+  }
+
+  .postContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    gap: 1rem;
+    margin-left: 2rem;
+    overflow-x: hidden;
+  }
+
+  .postInfo {
+    margin: 0;
+    padding: 0rem;
+    width: 75%;
+  }
+
+  .postComments {
+    margin: 0rem;
+    padding: 0rem;
+    overflow-y: visible;
+    width: 75%;
+  }
+
+  .comment {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+  }
+
+  .commentInfo {
+    word-wrap: break-word;
+    margin-bottom: 0.5rem;
+    color: #e4e5e8ad;
+  }
 }
